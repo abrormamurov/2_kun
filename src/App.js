@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [imageIndex, setImageIndex] = useState(0);
+  const images = [
+    "./images/2.jpg",
+    "./images/3.jpg",
+    "./images/4.jpg",
+    "./images/1.jpg",
+  ];
+
+  const oldingaClick = () => {
+    const newIndex = (imageIndex + 1) % images.length;
+    setImageIndex(newIndex);
+  };
+  const orqagaClick = () => {
+    const newIndex = (imageIndex - 1) % images.length;
+    setImageIndex(newIndex);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <img src={images[imageIndex]} alt="Rasm" width={400} />
+      <button onClick={oldingaClick}>Start</button>
+      <button onClick={orqagaClick}>Back</button>
     </div>
   );
 }
